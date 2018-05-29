@@ -8,15 +8,27 @@ function [G, A] = tucker_ts(Y, R, J1, J2, varargin)
 %   [G, A] = TUCKER_TS(Y, R, J1, J2) returns an approximate rank-R Tucker
 %   decomposition of Y in the form of a core tensor G and factor matrices
 %   A. Y can be a Matlab double array or one of the following types from 
-%   Tensor Toolbox: ktensor, tensor, ttensor, or sptensor. 
-%   Alternatively, Y can be a cell of the form 
-%   {'matfilename.mat',  inc_size}, where matfilename is the name of a
-%   mat file containing a tensor in the form of a Matlab double array, and 
-%   inc_size is a vector that contains the increment size to be used when
-%   used when reading in the mat file tensor (must divide the corresponding
-%   tensor dimension size). R is a vector containing the target dimension,
-%   and J1 and J2 are the two sketch dimensions used. G is a Tensor Toolbox
-%   tensor, and A is a cell of matrices.
+%   Tensor Toolbox: ktensor, tensor, ttensor, or sptensor. R is a vector 
+%   containing the target dimension, and J1 and J2 are the two sketch 
+%   dimensions used. G is a Tensor Toolbox tensor, and A is a cell of 
+%   matrices.
+%
+%   [G, A] = TUCKER_TS(input_cell, R, J1, J2) is the same as the last
+%   example, but with the first variable changed to a cell called
+%   input_cell. This option is used when we want to use an external
+%   function for computing the sketches, e.g., when we want to load data
+%   from the hard drive. input_cell should be of the following format:
+%       - input_cell{1} should be a function handle pointing to a function 
+%         which returns YsT and vecYs (see below); 
+%       - input_cell{2} should be a vector containing the size of each
+%         tensor dimension, e.g., I = [100 100 100] for a 3-way tensor of
+%         size 100 x 100 x 100;
+%       - the remaining entries of input_cell can be used to provide inputs
+%         to the function in input_cell{1}.
+%   The input function should take the following inputs, which are defined
+%   below, in the order listed:
+%       - Required: J1, J2, h1int64, h2int64, s, verbose.
+%       - Optional inputs (provided via input_cell{3:end}).
 %
 %   [G, A] = TUCKER_TS(___, Name, Value) specifies optional parameters
 %   using one or more Name, Value pair arguments. The following optional
@@ -48,14 +60,13 @@ tol = params.Results.tol;
 maxiters = params.Results.maxiters;
 verbose = params.Results.verbose;
 
-%% Set 'piece-by-piece' flag pbpflag
-% pbpflag will be true if we are reading a tensor from a mat file
+%% Set extflag
+% extflag will be true if we are using an external function to compute the
+% sketches, otherwise it will be false
 if iscell(Y)
-    pbpflag = true;
-    file = matfile(Y{1}, 'Writable', false);
-    inc_size = Y{2};
+    extflag = true;
 else
-    pbpflag = false;
+    extflag = false;
 end
 
 %% Convert input tensor to double array if necessary. Set sflag (sparsity flag)
@@ -69,8 +80,8 @@ elseif ~ismember(class(Y), {'double', 'cell'})
 end
 
 %% Define hash functions
-if pbpflag
-    sizeY = size(file, 'Y');
+if extflag
+    sizeY = Y{2};
 else
     sizeY = size(Y);
     nnzY = nnz(Y);
@@ -124,42 +135,14 @@ if sflag
     vecYs = SparseTensorSketchVecC_git(Y.vals, int64(Y.subs.'), h2int64, s, int64(J2));
 
 % Handle dense large tensor in matfile
-elseif pbpflag 
-    for n = 1:N
-        if n < N
-            no_inc = sizeY(n)/inc_size(n);
-        else
-            no_inc = sizeY(N-1)/inc_size(n);
-        end
-        if rem(no_inc,1) ~= 0
-            error('ERROR: The increment size must divide the relevant tensor dimension sizes.')
-        end
-        YsT{n} = zeros(J1, sizeY(n));
-        if n == 1
-            vecYs = zeros(J2, 1);
-        end
-        for inc = 1:no_inc
-            slice_start = 1+(inc-1)*inc_size(n);
-            slice_end = inc*inc_size(n);
-            if n < N
-                colons = repmat({':'}, 1, N-1);
-                Y_piece = file.Y(colons{:}, slice_start : slice_end);
-            else % n == N
-                colons = repmat({':'}, 1, N-2);
-                Y_piece = file.Y(colons{:}, slice_start : slice_end, :);
-            end
-            YsT{n} = YsT{n} + TensorSketchMatC3_git(double(tenmat(Y_piece, n)), h1int64(ns~=n), s(ns~=n), ...
-                int64(J1), int64(slice_start), int64(slice_end)).';
-            clear Y_piece_n
-            if n == 1
-                vecYs = vecYs + TensorSketchVecC_git(Y_piece, h2int64, s, ...
-                    int64(J2), int64(slice_start), int64(slice_end));
-            end
-        end
-        if verbose
-            fprintf('Finished computing sketch %d out of %d...\n', n+1, N+1)
-        end
+elseif extflag 
+    sketch_func = Y{1};
+    if length(Y) > 2
+        sketch_params = {J1, J2, h1int64, h2int64, s, verbose, Y{3:end}};
+    else
+        sketch_params = {J1, J2, h1int64, h2int64, s, verbose};
     end
+    [YsT, vecYs] = sketch_func(sketch_params{:});
     
 % Handle dense normal tensor 
 else 
