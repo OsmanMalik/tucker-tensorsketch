@@ -14,6 +14,7 @@ file = matfile(filename, 'Writable', false);
 sizeY = size(file, 'Y');
 N = length(sizeY);
 ns = 1:N;
+YsT = cell(N,1);
 
 for n = 1:N
     if n < N
