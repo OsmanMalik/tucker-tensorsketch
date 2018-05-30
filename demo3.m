@@ -33,7 +33,6 @@ maxiters = 50; % Maximum number of iterations
 inc_size = [100 100 100];
 filename = 'test.mat';
 
-
 %% Generate random dense tensor and save it to mat file
 
 fprintf('Generating dense tensor... ');
