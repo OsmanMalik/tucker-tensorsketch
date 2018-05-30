@@ -6,16 +6,16 @@
 // INPUTS:
 //	vec				- The input vector to be sketched.
 //	h				- A row or column cell containing column vector representing the hashing
-// 				  	  functions. Each column vector should be of type int32.
+// 				  	  functions. Each column vector should be of type int64.
 //	s				- A row or column cell containing column vectors representing the sign
 // 				      hashing function. The column vectors should be left as double arrays.
-//	sketch_dim 		- The target sketch dimension. Should be of type int32.
+//	sketch_dim 		- The target sketch dimension. Should be of type int64.
 //
 // OPTIONAL INPUTS:
 //	outer_dim_start 	- Use when sketching a large tensor in pieces; see Note 1 for more info.
-//						  Needs to be int32. Give as MATLAB indexing, i.e. start at 1.
+//						  Needs to be int64. Give as MATLAB indexing, i.e. start at 1.
 //	outer_dim_end		- Use when sketching a large tensor in pieces; see Note 1 for more info.
-//						  Needs to be int32. Give as MATLAB indexing, i.e. start at 1.
+//						  Needs to be int64. Give as MATLAB indexing, i.e. start at 1.
 //
 // OUTPUTS:
 //	vecS			- The TensorSketch of the input vector vec.
