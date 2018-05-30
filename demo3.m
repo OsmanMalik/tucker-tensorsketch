@@ -62,7 +62,6 @@ fprintf('\tDone!\n\n');
 
 fprintf('\nRunning tucker_ts...\n\n')
 tucker_ts_tic = tic;
-%[G, A] = tucker_ts({filename, inc_size}, R, J1, J2, 'tol', tol, 'maxiters', maxiters, 'verbose', true);
 inpt = {@sketch_from_mat, I, filename, inc_size};
 [G, A] = tucker_ts(inpt, R, J1, J2, 'tol', tol, 'maxiters', maxiters, 'verbose', true);
 tucker_ts_toc = toc(tucker_ts_tic);
