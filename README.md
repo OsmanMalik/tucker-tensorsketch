@@ -23,3 +23,6 @@ The three demo files demonstrate our functions. Below is a brief description of 
 * **Demo 1:** This scrips gives a demo of tucker_ts and tucker_ttmts decomposing a sparse tensor. The script generates a sparse tensor and then decomposes it using both tucker_ts and tucker_ttmts, as well as tucker_als from Tensor Toolbox.
 * **Demo 2:** This script gives a demo of tucker_ts and tucker_ttmts decomposing a dense tensor. The script generates a dense tensor and then decomposes it using both tucker_ts and tucker_ttmts, as well as tucker_als from Tensor Toolbox.
 * **Demo 3:** This script gives a demo of tucker_ts and tucker_ttmts decomposing a dense tensor which is stored in a mat file on the hard drive. The result is compared to that produced by tucker_als in Tensor Toolbox applied to the same tensor stored in memory.
+
+## Author contact information
+Please feel free to contact me at any time if you have any questions or would like to provide feedback on this code or our paper. I can be reached at osman.malik@colorado.edu.
