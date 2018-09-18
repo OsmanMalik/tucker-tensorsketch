@@ -24,3 +24,8 @@ The three demo files demonstrate our functions. Below is a brief description of 
 
 ## Author contact information
 Please feel free to contact me at any time if you have any questions or would like to provide feedback on this code or on our paper. I can be reached at osman.malik@colorado.edu.
+
+## Licenses
+This code uses the implementation of randomized SVD by Antoine Liutkus, which is available on MathWorks File Exchange. The license of that software is available in its original form in tucker-tensorsketch\help_functions\rsvd.
+
+All other code in this project fall under the license in the root of this project.
