@@ -1,5 +1,5 @@
 function [G, A] = tucker_ts(Y, R, J1, J2, varargin)
-% tucker_ts     Implementation of one-pass TUCKER-TS algorithm. TUCKER-TS
+% TUCKER_TS     Implementation of one-pass TUCKER-TS algorithm. TUCKER-TS
 %               utilizes TensorSketch to compute the Tucker decomposition
 %               of a tensor.
 %
@@ -35,21 +35,24 @@ function [G, A] = tucker_ts(Y, R, J1, J2, varargin)
 %   parameters are available: 'tol' sets the tolerance (default 1e-3),
 %   'maxiters' sets the maximum number of iterations (default 50),
 %   'verbose' controls how much information is printed during execution
-%   (default false).
+%   (true or false; default false).
 %
 % REFERENCES:
-%   [1]         Brett W. Bader, Tamara G. Kolda and others. MATLAB Tensor 
-%               Toolbox Version 2.6, Available online, February 2015. URL: 
-%               http://www.sandia.gov/~tgkolda/TensorToolbox/.
+%
+%   [1] B. W. Bader, T. G. Kolda and others. MATLAB Tensor Toolbox 
+%       Version 2.6, Available online, February 2015. 
+%       URL: http://www.sandia.gov/~tgkolda/TensorToolbox/.
 
 % Author:   Osman Asif Malik
 % Email:    osman.malik@colorado.edu
-% Date:     May 24, 2018
+% Date:     September 17, 2018
 
 %% Include relevant files
+
 addpath(genpath('help_functions'));
 
 %% Handle optional inputs
+
 params = inputParser;
 addParameter(params, 'tol', 1e-3, @isscalar);
 addParameter(params, 'maxiters', 50, @(x) isscalar(x) & x > 0);
@@ -63,6 +66,7 @@ verbose = params.Results.verbose;
 %% Set extflag
 % extflag will be true if we are using an external function to compute the
 % sketches, otherwise it will be false
+
 if iscell(Y)
     extflag = true;
 else
@@ -70,6 +74,7 @@ else
 end
 
 %% Convert input tensor to double array if necessary. Set sflag (sparsity flag)
+
 sflag = false;
 if ismember(class(Y), {'ktensor', 'tensor', 'ttensor'})
     Y = double(Y);
@@ -80,6 +85,7 @@ elseif ~ismember(class(Y), {'double', 'cell'})
 end
 
 %% Define hash functions
+
 if extflag
     sizeY = Y{2};
 else
@@ -88,8 +94,8 @@ else
 end
 N = length(sizeY);
 
-h1int64 = cell(N,1);
-h2int64 = cell(N,1);
+h1int64 = cell(N, 1);
+h2int64 = cell(N, 1);
 s = cell(N, 1);
 for n = 1:N
     h1int64{n} = int64(randi(J1, sizeY(n), 1));
@@ -98,6 +104,7 @@ for n = 1:N
 end
 
 %% Initialize factor matrices and core tensor
+
 A = cell(N,1);
 As1_hat = cell(N,1);
 As2_hat = cell(N,1);
@@ -110,6 +117,7 @@ for n = 2:N
 end
 
 %% Compute a total of N+1 TensorSketches of different shapes of Y
+
 ns = 1:N;
 YsT = cell(N, 1);
 
@@ -120,7 +128,7 @@ end
 % Handle sparse tensor
 if sflag 
     for n = 1:N
-        if J1*sizeY(n) < (N+1)*nnzY
+        if J1*sizeY(n) < 3*nnzY
             YsT{n} = SparseTensorSketchMatC_git(Y.vals, int64(Y.subs.'), h1int64(ns~=n), s(ns~=n), int64(J1), int64(sizeY(n)), int64(n));
         else
             % This case is for when the sketch dimension is so large that
@@ -134,7 +142,9 @@ if sflag
     end
     vecYs = SparseTensorSketchVecC_git(Y.vals, int64(Y.subs.'), h2int64, s, int64(J2));
 
-% Handle dense large tensor in matfile
+% Use custom external function for computing sketches. Is e.g. used for
+% handling dense large tensor in matfile in demo3.m provided with this
+% software.
 elseif extflag 
     sketch_func = Y{1};
     if length(Y) > 2
@@ -161,7 +171,8 @@ end
 
 clear Y
 
-%% Main loop: Iterate until convergence, for a maximum of no_repeat iterations
+%% Main loop: Iterate until convergence, for a maximum of maxiters iterations
+
 if verbose
     fprintf('Starting main loop...\n')
 end
