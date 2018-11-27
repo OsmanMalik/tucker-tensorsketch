@@ -201,7 +201,8 @@ for iter = 1:maxiters
     
     for n = 1:N
         % TensorSketch the Kronecker product and compute sketched LS problem
-        M1 = ifft(kr(flip(As1_hat(ns~=n))).');
+        %M1 = ifft(kr(flip(As1_hat(ns~=n))).'); % Old code. Uses function kr from Tensorlab.
+        M1 = ifft(khatrirao(As1_hat(ns~=n), 'r').'); % New code. Uses instead khatrirao, which is a function in Tensor Toolbox.
         Zn_tilde = YsT{n}.' * M1;
         [A{n},~,~] = rsvd(Zn_tilde, R(n));
 
