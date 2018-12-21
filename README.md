@@ -8,7 +8,9 @@ The figure below shows an experiment where we compare our functions to other com
 
 ![Experiment results](Experiment2Fig1.png)
 
-For more details, please see our paper which is forthcoming. Once it is available, a link to it will be added here. Please use the following link to view the results of our video frame classification experiment in the paper: https://drive.google.com/open?id=1usBNBSfnPuy1S2Oy8-QQPusrvBmVTohl
+For more details, please see our paper which is available here: http://papers.nips.cc/paper/8213-low-rank-tucker-decomposition-of-large-tensors-using-tensorsketch. Please use the following link to view the results of our video frame classification experiment in the paper: https://drive.google.com/open?id=1usBNBSfnPuy1S2Oy8-QQPusrvBmVTohl
+
+The original video which we used to construct the dataset used in our video frame classification experiment is available for download here: https://drive.google.com/file/d/1HX6-motNPz_xZnkTJ32ZetRj_VUkI9XZ/view?usp=sharing. In our experiment, we converted this video to grayscale and then treated the video as a 3-way tensor. The video in the link is 173 MB in size. After converting it to grayscale and then simply treating it as an array of doubles its size is 38 GB. If you use this video in one your experiments, please include a reference to our paper.
 
 ## Requirements
 This code requires Tensor Toolbox version 2.6 by Bader, Kolda and others (available at http://www.sandia.gov/~tgkolda/TensorToolbox/).
