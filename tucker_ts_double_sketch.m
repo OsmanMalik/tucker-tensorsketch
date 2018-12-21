@@ -4,7 +4,9 @@ function [G, A] = tucker_ts_double_sketch(Y, R, J1, J2, varargin)
 %                           Tucker decomposition of a tensor. Reduces size
 %                           of least-squares problem by utilizing
 %                           "double-sketching"; specifically, it uses the
-%                           idea in Remark 3.2 (c) of [2].
+%                           idea in Remark 3.2 (c) of [2]. For further
+%                           information about our methods, please see our
+%                           paper [2].
 %
 %                           This function requires Tensor Toolbox [1] 
 %                           version 2.6.

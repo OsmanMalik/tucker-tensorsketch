@@ -1,7 +1,7 @@
 /*
-// SPARSETENSORSKETCHMATC.C 	Computes the sketch of the transpose of mode-n matricization
-// 								of the input tensor. The sketch is the TensorSketch 
-// 								corresponding to the input hashing functions h and s.
+// SPARSETENSORSKETCHMATC_GIT.C 	Computes the sketch of the transpose of mode-n matricization
+// 									of the input tensor. The sketch is the TensorSketch 
+// 									corresponding to the input hashing functions h and s.
 //
 // INPUTS:
 //	Y.vals		- This is a row vector containing the non-zero values of the tensor. This

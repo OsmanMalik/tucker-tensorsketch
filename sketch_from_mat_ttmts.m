@@ -20,15 +20,21 @@ function [YsT, vecYs, vecYs_stop] = sketch_from_mat_ttmts(J1, J2, h1int64, h2int
 %   Please see demo3.m, which was provided together with
 %   this software, for an example of how to use this function.
 %
+%   For further information about our methods, please see our paper [2].
+%
 % REFERENCES:
 %
 %   [1] B. W. Bader, T. G. Kolda and others. MATLAB Tensor Toolbox 
 %       Version 2.6, Available online, February 2015. 
 %       URL: http://www.sandia.gov/~tgkolda/TensorToolbox/.
+%
+%   [2] O. A. Malik, S. Becker. Low-Rank Tucker Decomposition of Large 
+%       Tensors Using TensorSketch. Advances in Neural Information 
+%       Processing Systems 32, pp. 10117-10127, 2018.
 
 % Author:   Osman Asif Malik
 % Email:    osman.malik@colorado.edu
-% Date:     September 17, 2018
+% Date:     December 21, 2018
 
 file = matfile(filename, 'Writable', false);
 sizeY = size(file, 'Y');

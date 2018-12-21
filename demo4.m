@@ -7,10 +7,12 @@
 % sketch dimensions J1+J2.
 %
 % The script is similar to demo1: It generates a sparse tensor and then 
-% decomposes using both tucker_ts and tucker_ts_double_sketch. Since the 
-% tensor in the example is quite large, we do not attempt to decompose it 
-% tucker_als in Tensor Toolbox [1]. Please note that the script requires 
-% Tensor Toolbox version 2.6 or later.
+% decomposes it using both tucker_ts and tucker_ts_double_sketch. Since the 
+% tensor in the example is quite large, we do not attempt to decompose it
+% using tucker_als in Tensor Toolbox [1]. Please note that the script
+% requires Tensor Toolbox version 2.6 or later.
+%
+% For further information about our methods, please see our paper [2].
 %
 % REFERENCES:
 %
@@ -75,6 +77,6 @@ tucker_tsds_error = SptTtDiffNorm(Y, G_tsds, A_tsds)/normY;
 fprintf('Done!\n')
 
 fprintf('\nRelative error for tucker_ts: %.6e\n', tucker_ts_error);
-fprintf('Relative error for tucker_ttmts: %.6e\n', tucker_tsds_error);
+fprintf('Relative error for tucker_ts_double_sketch: %.6e\n', tucker_tsds_error);
 fprintf('\nTime for tucker_ts: %.2f s\n', tucker_ts_toc);
-fprintf('Time for tucker_ttmts: %.2f s\n', tucker_ts_double_sketch_toc);
+fprintf('Time for tucker_ts_double_sketch: %.2f s\n', tucker_ts_double_sketch_toc);

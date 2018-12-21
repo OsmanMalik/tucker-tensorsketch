@@ -6,15 +6,21 @@
 % Tensor Toolbox [1]. Please note that the script requires Tensor Toolbox
 % version 2.6 or later.
 %
+% For further information about our methods, please see our paper [2].
+%
 % REFERENCES:
 %
 %   [1] B. W. Bader, T. G. Kolda and others. MATLAB Tensor Toolbox 
 %       Version 2.6, Available online, February 2015. 
 %       URL: http://www.sandia.gov/~tgkolda/TensorToolbox/.
+%
+%   [2] O. A. Malik, S. Becker. Low-Rank Tucker Decomposition of Large 
+%       Tensors Using TensorSketch. Advances in Neural Information 
+%       Processing Systems 32, pp. 10117-10127, 2018.
 
 % Author:   Osman Asif Malik
 % Email:    osman.malik@colorado.edu
-% Date:     September 17, 2018
+% Date:     December 21, 2018
 
 %% Include relevant files
 

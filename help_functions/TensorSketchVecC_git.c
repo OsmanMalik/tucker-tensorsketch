@@ -1,7 +1,7 @@
 /*
-//	TENSORSKETCHVECC.C 		Computes the sketch of the input vector. The sketch is
-//							the TensorSketch corresponding to the input hash 
-//							functions h and .
+//	TENSORSKETCHVECC_GIT.C 		Computes the sketch of the input vector. The sketch is
+//								the TensorSketch corresponding to the input hash 
+//								functions h and s.
 //							
 // INPUTS:
 //	vec				- The input vector to be sketched.
@@ -35,7 +35,7 @@
 /*
 // Author:   Osman Asif Malik
 // Email:    osman.malik@colorado.edu
-// Date:     May 24, 2018
+// Date:     December 21, 2018
 */
 
 #include "mex.h"

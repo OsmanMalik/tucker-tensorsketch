@@ -6,17 +6,18 @@ function X = CreateSparseTensor(G, A)
 %
 %   X = GENERATE_RANDOM_SPTENSOR(G, A) returns a Tensor Toolbox [1]
 %   sptensor constructed from the core tensor G and factor matrices A. G
-%   must be a Matlab double array, and A must a cell containing the factor
-%   matrices. These matrices should be sparse Matlab double arrays.
+%   must be a Matlab double array, and A must be a cell containing the
+%   factor matrices. These matrices should be sparse Matlab double arrays.
 %
 % REFERENCES:
-%   [1]         Brett W. Bader, Tamara G. Kolda and others. MATLAB Tensor 
-%               Toolbox Version 2.6, Available online, February 2015. URL: 
-%               http://www.sandia.gov/~tgkolda/TensorToolbox/.
+%
+%   [1] Brett W. Bader, Tamara G. Kolda and others. MATLAB Tensor 
+%       Toolbox Version 2.6, Available online, February 2015. URL: 
+%       http://www.sandia.gov/~tgkolda/TensorToolbox/.
 
 % Author:   Osman Asif Malik
 % Email:    osman.malik@colorado.edu
-% Date:     May 24, 2018
+% Date:     December 21, 2018
 
 Avals = cell(length(A),1);
 Asubs = cell(length(A),1);

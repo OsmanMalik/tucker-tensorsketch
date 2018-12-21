@@ -1,7 +1,8 @@
 function [G, A] = tucker_ttmts(Y, R, J1, J2, varargin)
 % TUCKER_TTMTS  Implementation of one-pass TUCKER-TTMTS algorithm. 
 %               TUCKER-TTMTS utilizes TensorSketch to compute the Tucker 
-%               decomposition of a tensor.
+%               decomposition of a tensor. For further information about
+%               our methods, please see our paper [4].
 %
 %               This function requires Tensor Toolbox [1] version 2.6. 
 % 
@@ -44,22 +45,26 @@ function [G, A] = tucker_ttmts(Y, R, J1, J2, varargin)
 %
 % REFERENCES:
 %
-%   [1]         B. W. Bader, T. G. Kolda and others. MATLAB Tensor Toolbox 
-%               Version 2.6, Available online, February 2015. 
-%               URL: http://www.sandia.gov/~tgkolda/TensorToolbox/.
+%   [1] B. W. Bader, T. G. Kolda and others. MATLAB Tensor Toolbox 
+%       Version 2.6, Available online, February 2015. 
+%       URL: http://www.sandia.gov/~tgkolda/TensorToolbox/.
 %
-%   [2]         N. Halko, P. G. Martinsson, and J. A. Tropp. Finding 
-%               structure with randomness: Probabilistic algorithms for
-%               constructing approximate matrix decompositions. SIAM Rev.,
-%               53(2):217-288, May 2011.
+%   [2] N. Halko, P. G. Martinsson, and J. A. Tropp. Finding 
+%       structure with randomness: Probabilistic algorithms for
+%       constructing approximate matrix decompositions. SIAM Rev.,
+%       53(2):217-288, May 2011.
 %
-%   [3]         A. Liutkus. randomized Singular Value Decomposition Version
-%               1.0.0.0, Available online, September 2014. 
-%               URL: https://www.mathworks.com/matlabcentral/fileexchange/47835-randomized-singular-value-decomposition
+%   [3] A. Liutkus. randomized Singular Value Decomposition Version
+%       1.0.0.0, Available online, September 2014. 
+%       URL: https://www.mathworks.com/matlabcentral/fileexchange/47835-randomized-singular-value-decomposition
+%
+%   [4] O. A. Malik, S. Becker. Low-Rank Tucker Decomposition of Large 
+%       Tensors Using TensorSketch. Advances in Neural Information 
+%       Processing Systems 32, pp. 10117-10127, 2018.
 
 % Author:   Osman Asif Malik
 % Email:    osman.malik@colorado.edu
-% Date:     September 17, 2018
+% Date:     December 21, 2018
 
 %% Include relevant files
 
@@ -121,7 +126,6 @@ end
 
 A = cell(N,1);
 As1_hat = cell(N,1);
-As2_hat = cell(N,1);
 G = tensor(rand(R)*2-1);
 for n = 2:N
     A{n} = rand(sizeY(n),R(n))*2-1;

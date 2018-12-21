@@ -1,7 +1,7 @@
 /*
-// TENSORSKETCHMATC3.C 	Computes the sketch of the transpose of input matrix. The sketch
-//						is the TensorSketch corresponding to the input hashing functions
-// 						h and s.
+// TENSORSKETCHMATC3_GIT.C 	Computes the sketch of the transpose of input matrix. The sketch
+//							is the TensorSketch corresponding to the input hashing functions
+// 							h and s.
 //
 // INPUTS:
 // 	M 		 	- The input matrix. Note that the transpose of the sketch of the transpose of M will be
@@ -49,7 +49,7 @@
 /*
 // Author:   Osman Asif Malik
 // Email:    osman.malik@colorado.edu
-// Date:     May 24, 2018
+// Date:     December 21, 2018
 */
 
 #include "mex.h"
