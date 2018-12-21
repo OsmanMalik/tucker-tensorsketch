@@ -7,3 +7,4 @@ mex SptTtInnerProductC.c
 mex TensorSketchMatC3_git.c
 mex TensorSketchVecC_git.c
 mex krsumiC.c
+mex SparseTensorSketchMatDSC.c
