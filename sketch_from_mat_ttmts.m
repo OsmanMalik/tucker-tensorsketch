@@ -44,9 +44,11 @@ YsT = cell(N,1);
 
 for n = 1:N
     if n < N
-        no_inc = sizeY(n)/inc_size(n);
+        current_inc_size = inc_size(N);
+        no_inc = sizeY(N)/current_inc_size;
     else
-        no_inc = sizeY(N-1)/inc_size(n);
+        current_inc_size = inc_size(N-1);
+        no_inc = sizeY(N-1)/current_inc_size;
     end
     if rem(no_inc,1) ~= 0
         error('ERROR: The increment size must divide the relevant tensor dimension sizes.')
@@ -57,8 +59,8 @@ for n = 1:N
         vecYs_stop = zeros(J1, 1);
     end
     for inc = 1:no_inc
-        slice_start = 1+(inc-1)*inc_size(n);
-        slice_end = inc*inc_size(n);
+        slice_start = 1+(inc-1)*current_inc_size;
+        slice_end = inc*current_inc_size;
         if n < N
             colons = repmat({':'}, 1, N-1);
             Y_piece = file.Y(colons{:}, slice_start : slice_end);
