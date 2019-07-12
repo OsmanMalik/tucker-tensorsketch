@@ -31,7 +31,16 @@ The four demo files demonstrate our functions. Below is a brief description of e
 * **Demo 4:** This script gives a demo of **tucker_ts** and **tucker_ts_double_sketch** decomposing a sparse tensor. The script generates a sparse tensor and then decomposes it using both **tucker_ts** and **tucker_ts_double_sketch**. The idea is to demonstrate that the technique which we present in Remark 3.2 (c) of our paper improves the speed of the TUCKER-TS algorithm when the tensor dimension sizes are much larger than the sum of the two target sketch dimensions.
 
 ## Referencing this code
-If you use our code in any of your own work, please reference our paper.
+If you use our code in any of your own work, please reference our paper:
+```
+@inproceedings{Malik-Becker-2018,
+  title = {Low-Rank {Tucker} Decomposition of Large Tensors Using {TensorSketch}},
+  booktitle = {Advances in {Neural} {Information} {Processing} {Systems} 32},
+  author = {Malik, Osman Asif and Becker, Stephen},
+  year = {2018},
+  pages = {10096--10106},
+}
+```
 
 ## Author contact information
 Please feel free to contact me at any time if you have any questions or would like to provide feedback on this code or on our paper. I can be reached at osman.malik@colorado.edu.
