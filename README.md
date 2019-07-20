@@ -34,11 +34,11 @@ The four demo files demonstrate our functions. Below is a brief description of e
 If you use our code in any of your own work, please reference our paper:
 ```
 @inproceedings{Malik-Becker-2018,
-  title = {Low-Rank {Tucker} Decomposition of Large Tensors Using {TensorSketch}},
+  author    = {Osman Asif Malik and Stephen Becker},
+  title     = {Low-Rank {Tucker} Decomposition of Large Tensors Using {TensorSketch}},
   booktitle = {Advances in {Neural} {Information} {Processing} {Systems} 32},
-  author = {Malik, Osman Asif and Becker, Stephen},
-  year = {2018},
-  pages = {10096--10106},
+  pages     = {10096--10106},
+  year      = {2018},
 }
 ```
 
