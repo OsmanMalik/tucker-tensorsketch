@@ -1,7 +1,7 @@
 # Tucker-TensorSketch
 Tucker-TensorSketch provides Matlab functions for low-rank Tucker decomposition of tensors using TensorSketch. For further information about our methods, please see our paper:
 
-O. A. Malik and S. Becker. Low-Rank Tucker Decomposition of Large Tensors Using TensorSketch. *Advances in Neural Information Processing Systems 32*, pages 10117-10127, 2018.
+O. A. Malik and S. Becker. Low-Rank Tucker Decomposition of Large Tensors Using TensorSketch. *Advances in Neural Information Processing Systems 32*, pages 10096-10106, 2018.
 
 It is available at http://papers.nips.cc/paper/8213-low-rank-tucker-decomposition-of-large-tensors-using-tensorsketch.
 
@@ -33,12 +33,12 @@ The four demo files demonstrate our functions. Below is a brief description of e
 ## Referencing this code
 If you use our code in any of your own work, please reference our paper:
 ```
-@inproceedings{Malik-Becker-2018,
-  author    = {Osman Asif Malik and Stephen Becker},
-  title     = {Low-Rank {Tucker} Decomposition of Large Tensors Using {TensorSketch}},
-  booktitle = {Advances in {Neural} {Information} {Processing} {Systems} 32},
-  pages     = {10096--10106},
-  year      = {2018},
+@inproceedings{malik-2018-low-rank-tucker,
+  title = {Low-Rank {T}ucker Decomposition of Large Tensors Using {T}ensor{S}ketch},
+  booktitle = {Advances in {Neural Information Processing Systems}},
+  author = {Malik, Osman Asif and Becker, Stephen},
+  year = {2018},
+  pages = {10096--10106},
 }
 ```
 
