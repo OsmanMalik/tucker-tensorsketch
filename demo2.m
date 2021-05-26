@@ -16,7 +16,7 @@
 %
 %   [2] O. A. Malik, S. Becker. Low-Rank Tucker Decomposition of Large 
 %       Tensors Using TensorSketch. Advances in Neural Information 
-%       Processing Systems 32, pp. 10117-10127, 2018.
+%       Processing Systems (NeurIPS), 2018.
 
 % Author:   Osman Asif Malik
 % Email:    osman.malik@colorado.edu
