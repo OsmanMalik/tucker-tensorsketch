@@ -13,9 +13,9 @@ The figure below shows an experiment where we compare our functions to other com
 ![Experiment results](Experiment2Fig1.png)
 
 ## Video experiment
-In our paper, we present an experiment where we apply one of our methods to a 3-way tensor representing a video and then use the resulting decomposition to classify frames that contain a distubance. Use the following link to view a video showing the results of this experiment: https://drive.google.com/open?id=1usBNBSfnPuy1S2Oy8-QQPusrvBmVTohl
+In our paper, we present an experiment where we apply one of our methods to a 3-way tensor representing a video and then use the resulting decomposition to classify frames that contain a distubance. Use the following link to view a video showing the results of this experiment: https://figshare.com/articles/media/Walking_Past_Camera/15135186?file=29084178
 
-The original video which we used in this experiment is available for download here: https://drive.google.com/file/d/1HX6-motNPz_xZnkTJ32ZetRj_VUkI9XZ/view?usp=sharing. In our experiment, we converted this video to grayscale and then treated the video as a 3-way tensor. The video in the link is 173 MB in size. After converting it to grayscale and then simply treating it as an array of doubles its size is about 38 GB. Feel free to use this video in your own experiments. If you do, please provide a reference to our paper.
+The original video which we used in this experiment is available for download here: https://figshare.com/articles/media/Walking_Past_Camera/15135186?file=29084181. In our experiment, we converted this video to grayscale and then treated the video as a 3-way tensor. The video in the link is 173 MB in size. After converting it to grayscale and then simply treating it as an array of doubles its size is about 38 GB. Feel free to use this video in your own experiments. If you do, please provide a reference to our paper.
 
 ## Requirements
 Our code requires Tensor Toolbox version 2.6 by Bader, Kolda and others (available at http://www.sandia.gov/~tgkolda/TensorToolbox/).
