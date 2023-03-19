@@ -18,7 +18,7 @@ In our paper, we present an experiment where we apply one of our methods to a 3-
 The original video which we used in this experiment is available for download here: https://figshare.com/articles/media/Walking_Past_Camera/15135186?file=29084181. In our experiment, we converted this video to grayscale and then treated the video as a 3-way tensor. The video in the link is 173 MB in size. After converting it to grayscale and then simply treating it as an array of doubles its size is about 38 GB. Feel free to use this video in your own experiments. If you do, please provide a reference to our paper.
 
 ## Requirements
-Our code requires Tensor Toolbox version 2.6 by Bader, Kolda and others (available at http://www.sandia.gov/~tgkolda/TensorToolbox/).
+Our code requires Tensor Toolbox version 2.6 by Bader, Kolda and others (available at https://www.tensortoolbox.org/).
 
 ## Installation
 Run the file **compile_all_mex.m** inside the folder help_functions. Alternatively, simply compile each C file individually by running "mex filename.c" inside Matlab.
